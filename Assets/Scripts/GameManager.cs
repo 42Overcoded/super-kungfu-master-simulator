@@ -3,20 +3,23 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int currentRound = 0;
-    int difficulty_setting = 0; //0 = easy, 1 = medium, 2 = hard
+    private int difficulty_setting = 0; //0 = easy, 1 = medium, 2 = hard
     public float current_difficulty = 1; //the difficulty will depend on the current round and the difficulty setting. It should be used to determine the number of enemies and their strength
-    float roundTime = 60f; //Duration of each round in seconds
-    float gameTime = 0f; //Variable to keep track of the time if the current round
-    float transitionTimer = 0f; //Timer to keep track of the time between rounds
+    private float roundTime = 60f; //Duration of each round in seconds
+    private float gameTime = 0f; //Variable to keep track of the time if the current round
+    private float transitionTimer = 0f; //Timer to keep track of the time between rounds
     public int score = 0;
-    int gameState = 0; //0 = round starting, 1 = round in progress, 2 = round ended, 3 = game over
-    GameObject player;
+    private int gameState = 0; //0 = round starting, 1 = round in progress, 2 = round ended, 3 = game over
+    private GameObject player;
     public int numberOfEnemies = 0; //placeholder, number of enemies remaining in the round, this should be updated to function properly with the enemy spawner
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.Find("Player"); //Update this to the correct class once implemented
+        if (player == null) {
+            Debug.LogError("Player object not found in the scene!");
+        }
 
         current_difficulty += difficulty_setting * 2f; //Initialize the difficulty based on the difficulty setting
     }
@@ -24,6 +27,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null) {
+            Debug.LogError("Player object not found in the scene!");
+            return; //Exit if player is not found
+        }
         //Updates the current round time
         gameTime += Time.deltaTime;
 
@@ -34,7 +41,7 @@ public class GameManager : MonoBehaviour
         roundUpdate();
     }
 
-    void roundUpdate()
+    private void roundUpdate()
     {
         switch (gameState) { //simple state machine to handle game states
             case 0: //Round start
@@ -89,7 +96,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Spawn enemies");
     }
 
-    void updateDifficulty()
+    private void updateDifficulty()
     {
         current_difficulty += 1 + difficulty_setting * 0.5f; //Example formula to calculate difficulty based on round and difficulty setting
     }
