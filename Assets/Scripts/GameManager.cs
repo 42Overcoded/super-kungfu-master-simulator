@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     public int numberOfEnemies = 0; //placeholder, number of enemies remaining in the round, this should be updated to function properly with the enemy spawner
 
+    [Header("Enemy Spawning")]
+    [SerializeField] private GameObject enemyPrefab; //Reference to the enemy prefab
+    [SerializeField] private float spawnRadius = 10f; //Radius of the spawn circle around the player
+    [SerializeField] private int baseEnemyCount = 3; //Base number of enemies per round
+    [SerializeField] private float enemyCountMultiplier = 1.5f; //How much the enemy count increases per round
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -93,7 +99,41 @@ public class GameManager : MonoBehaviour
         updateDifficulty();
 
         Debug.Log("Starting round: " + currentRound);
-        Debug.Log("Spawn enemies");
+        SpawnEnemies();
+    }
+
+    private void SpawnEnemies()
+    {
+        if (enemyPrefab == null)
+        {
+            Debug.LogError("Enemy prefab not assigned!");
+            return;
+        }
+
+        // Calculate number of enemies based on round and difficulty
+        int enemyCount = Mathf.RoundToInt(baseEnemyCount * Mathf.Pow(enemyCountMultiplier, currentRound - 1) * current_difficulty);
+        numberOfEnemies = enemyCount;
+
+        // Spawn enemies in a circle around the player
+        for (int i = 0; i < enemyCount; i++)
+        {
+            // Calculate angle for this enemy
+            float angle = i * (360f / enemyCount);
+            float radians = angle * Mathf.Deg2Rad;
+
+            // Calculate position
+            float x = player.transform.position.x + spawnRadius * Mathf.Cos(radians);
+            float z = player.transform.position.z + spawnRadius * Mathf.Sin(radians);
+            Vector3 spawnPosition = new Vector3(x, player.transform.position.y, z);
+
+            // Spawn the enemy
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            
+            // Make enemy face the player
+            enemy.transform.LookAt(player.transform);
+        }
+
+        Debug.Log($"Spawned {enemyCount} enemies");
     }
 
     private void updateDifficulty()
