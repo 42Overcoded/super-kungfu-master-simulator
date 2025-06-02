@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Super Kungfu Master Simulator.sln"
+    "dotnet.defaultSolution": "super-kungfu-master-simulator.sln"
 }
