@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.6444096, g: 0.6399005, b: 0.6397059, a: 1}
+  m_FogColor: {r: 0.79622644, g: 0.7947863, b: 0.6354788, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.03
   m_LinearFogStart: 0
@@ -880,6 +880,14 @@ PrefabInstance:
     - target: {fileID: 4426959103739567318, guid: f14ee635453e54646904c13e318c701a, type: 3}
       propertyPath: m_Name
       value: --- Gameplay ---
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426959103739567318, guid: f14ee635453e54646904c13e318c701a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363184815469198992, guid: f14ee635453e54646904c13e318c701a, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8607643444316518962, guid: f14ee635453e54646904c13e318c701a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3276,8 +3284,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.58
+  m_Color: {r: 0.98490566, g: 0.9736976, b: 0.7117337, a: 1}
+  m_Intensity: 0.9
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

@@ -33,6 +33,7 @@ Transform:
   - {fileID: 8886965541147992410}
   - {fileID: 218925494844730588}
   - {fileID: 7485162824586771179}
+  - {fileID: 1898162404406430087}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4647096606080146105
@@ -237,6 +238,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8607643444316518962}
     m_Modifications:
+    - target: {fileID: 5085270678771513777, guid: 223aa62c64486844990f52a4e303cb48, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 0927d29e476ce5843b1f7d2a96943c51, type: 3}
+    - target: {fileID: 5102560676803722884, guid: 223aa62c64486844990f52a4e303cb48, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 0927d29e476ce5843b1f7d2a96943c51, type: 3}
     - target: {fileID: 6190419832962065812, guid: 223aa62c64486844990f52a4e303cb48, type: 3}
       propertyPath: m_Name
       value: Player XR Origin (XR Rig)
@@ -880,6 +889,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5790362245941073629, guid: 753505d367f39d04c8ef944e9491a149, type: 3}
   m_PrefabInstance: {fileID: 8587401125935450765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8648998390073033427
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8607643444316518962}
+    m_Modifications:
+    - target: {fileID: 794841219737073885, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_Name
+      value: Music Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.34436
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.863903
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.038055
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+--- !u!4 &1898162404406430087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7084384935819021140, guid: e2c2f0644dd11d643bf6747c2649a945, type: 3}
+  m_PrefabInstance: {fileID: 8648998390073033427}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8890921240398933199
 PrefabInstance:
