@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed = 2f; // Speed of the bullet
     [SerializeField] private float lifetime = 15f; // How long the bullet exists before being destroyed
 
+    public float damage = 10f; // Damage dealt by the bullet
+
     private Vector3 direction;
 
     private void Start()
