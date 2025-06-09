@@ -90,6 +90,7 @@ public class enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Enemy hit by: " + other.gameObject.name);
         // Check if the colliding object is a bullet
         if (other.CompareTag("Bullet"))
         {

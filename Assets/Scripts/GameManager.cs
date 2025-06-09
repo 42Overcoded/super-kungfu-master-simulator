@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
             // Calculate position
             float x = player.transform.position.x + spawnRadius * Mathf.Cos(radians);
             float z = player.transform.position.z + spawnRadius * Mathf.Sin(radians);
-            Vector3 spawnPosition = new Vector3(x, player.transform.position.y, z);
+            Vector3 spawnPosition = new Vector3(x, 0, z);
 
             // Spawn the enemy
             GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
