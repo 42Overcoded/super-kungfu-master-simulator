@@ -20,9 +20,6 @@ public class Bullet : MonoBehaviour
         direction.y = 0;
         direction = direction.normalized;
 
-        // Set the bullet's rotation to match its movement direction
-        transform.rotation = Quaternion.LookRotation(direction);
-
         // Destroy the bullet after lifetime seconds
         Destroy(gameObject, lifetime);
     }

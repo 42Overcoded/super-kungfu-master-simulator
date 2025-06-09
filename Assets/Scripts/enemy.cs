@@ -4,11 +4,10 @@ public class enemy : MonoBehaviour
 {
     [Header("Combat Settings")]
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float shootInterval = 4f;
     [SerializeField] private Transform firePoint; // Point where bullets will spawn
     [SerializeField] private float spreadAngle = 5f; // Maximum angle of spread in degrees
 
-    private float shootTimer = 0f;
+    private float nextShootTime;
     private GameManager gameManager;
     private Transform playerTransform;
 
@@ -41,6 +40,14 @@ public class enemy : MonoBehaviour
         {
             firePoint = transform;
         }
+
+        // Set initial shoot time
+        SetNextShootTime();
+    }
+
+    private void SetNextShootTime()
+    {
+        nextShootTime = Time.time + Random.Range(2f, 8f);
     }
 
     // Update is called once per frame
@@ -48,12 +55,11 @@ public class enemy : MonoBehaviour
     {
         if (playerTransform != null)
         {
-            // Update shoot timer
-            shootTimer += Time.deltaTime;
-            if (shootTimer >= shootInterval)
+            // Check if it's time to shoot
+            if (Time.time >= nextShootTime)
             {
                 Shoot();
-                shootTimer = 0f;
+                SetNextShootTime();
             }
 
             // Make enemy face the player
@@ -90,6 +96,7 @@ public class enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Enemy hit by: " + other.gameObject.name);
         // Check if the colliding object is a bullet
         if (other.CompareTag("Bullet"))
         {
