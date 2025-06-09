@@ -22,7 +22,7 @@ public class HandBulletInteractions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("bullet"))
+        if (other.CompareTag("Bullet"))
         {
             BounceBullet(other);
         }
@@ -30,7 +30,7 @@ public class HandBulletInteractions : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("bullet"))
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             BounceBullet(collision.collider);
         }
@@ -38,20 +38,13 @@ public class HandBulletInteractions : MonoBehaviour
 
     private void BounceBullet(Collider bulletCollider)
     {
-        Rigidbody bulletRb = bulletCollider.GetComponent<Rigidbody>();
+        Bullet bulletScript = bulletCollider.GetComponent<Bullet>();
+        Vector3 incomingDirection = bulletScript.direction;
 
-        if (bulletRb != null)
+        if (bulletScript != null)
         {
-            // Calculate bounce direction (reflect the velocity)
-            Vector3 incomingDirection = bulletRb.linearVelocity.normalized;
-            Vector3 normal = (bulletCollider.transform.position - transform.position).normalized;
-            Vector3 bounceDirection = Vector3.Reflect(incomingDirection, normal);
-
-            // Apply bounce force
-            bulletRb.linearVelocity = bounceDirection * bounceForce;
-
-            // Optional: Add some random variation to make it more interesting
-            bulletRb.linearVelocity += Random.insideUnitSphere * 2f;
+            // Optionally, you can reset the bullet's state or properties
+            bulletScript.FireBullet(incomingDirection * -1); // Reverse the direction
         }
     }
 }
