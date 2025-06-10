@@ -33,15 +33,6 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        // If we hit anything else (except other bullets), destroy the bullet
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
-    }
-
     public void FireBullet()
     {
         direction = transform.forward;

@@ -101,6 +101,7 @@ public class enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Die();
+            Destroy(other.gameObject);
         }
     }
 
