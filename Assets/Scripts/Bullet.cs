@@ -36,10 +36,10 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // If we hit anything else (except other bullets), destroy the bullet
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
+        // if (other.CompareTag("Enemy"))
+        // {
+        //     Destroy(gameObject);
+        // }
     }
 
     public void FireBullet()
