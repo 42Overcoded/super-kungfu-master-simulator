@@ -9,6 +9,7 @@ public class enemy : MonoBehaviour
 
     private float nextShootTime;
     private GameManager gameManager;
+    private GameObject player;
     private Transform playerTransform;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,7 +26,7 @@ public class enemy : MonoBehaviour
         }
 
         // Find the player
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerTransform = player.transform;
@@ -55,6 +56,7 @@ public class enemy : MonoBehaviour
     {
         if (playerTransform != null)
         {
+            playerTransform.position = player.transform.position;
             // Check if it's time to shoot
             if (Time.time >= nextShootTime)
             {
