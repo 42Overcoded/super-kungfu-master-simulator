@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -150,7 +151,17 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        gameState = 3; //Set game state to game over
-        Debug.Log("Game Over! Final Score: " + score);
+        if (gameState == 3)
+        {
+            if (gameTime > 5f) {
+                SceneManager.LoadScene("HubScene", LoadSceneMode.Single);
+            }
+        }
+        else
+        {
+            gameTime = 0f;
+            gameState = 3; //Set game state to game over
+            Debug.Log("Game Over! Final Score: " + score);
+        }
     }
 }
