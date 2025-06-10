@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("Player"); //Update this to the correct class once implemented
+        player = GameObject.FindWithTag("Player"); //Find the player object in the scene
         if (player == null) {
             Debug.LogError("Player object not found in the scene!");
         }
@@ -39,11 +40,6 @@ public class GameManager : MonoBehaviour
         }
         //Updates the current round time
         gameTime += Time.deltaTime;
-
-        if (false) { //this should check the life of the player
-            gameState = 3; //Change to game over state if player is dead
-            Debug.Log("Player is dead!");
-        }
         roundUpdate();
     }
 
@@ -124,11 +120,11 @@ public class GameManager : MonoBehaviour
             // Calculate position
             float x = player.transform.position.x + spawnRadius * Mathf.Cos(radians);
             float z = player.transform.position.z + spawnRadius * Mathf.Sin(radians);
-            Vector3 spawnPosition = new Vector3(x, player.transform.position.y, z);
+            Vector3 spawnPosition = new Vector3(x, 3f, z);
 
             // Spawn the enemy
             GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            
+
             // Make enemy face the player
             enemy.transform.LookAt(player.transform);
         }
@@ -146,10 +142,26 @@ public class GameManager : MonoBehaviour
     {
         score += points;
     }
-    
+
     public void SetDifficulty(int difficulty)
     {
         difficulty_setting = difficulty;
         Debug.Log("Difficulty set to: " + difficulty_setting);
+    }
+
+    public void EndGame()
+    {
+        if (gameState == 3)
+        {
+            if (gameTime > 5f) {
+                SceneManager.LoadScene("HubScene", LoadSceneMode.Single);
+            }
+        }
+        else
+        {
+            gameTime = 0f;
+            gameState = 3; //Set game state to game over
+            Debug.Log("Game Over! Final Score: " + score);
+        }
     }
 }

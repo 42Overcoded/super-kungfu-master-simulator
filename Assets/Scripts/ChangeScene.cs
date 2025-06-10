@@ -9,11 +9,11 @@ public class ChangeScene : MonoBehaviour
     {
         this.difficulty = difficulty;
     }
-    
-    public void MoveToScene(int sceneID)
+
+    public void MoveToScene(string sceneName)
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadScene(sceneID);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
